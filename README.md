@@ -1,12 +1,13 @@
 # Contents
-1. Standard Template Library
+1. <a>Standard Template Library</a>
 
 # Standard Template Library
-STL is the standard template library which contains C++ template classes. STL is a powerful tool and it reduces programming time with rich implementations of freuently used data structures and algorithms. Important parts of the STL are as follows:
+The Standard Template Library(STL) is a set of C++ template classes to provide common data structures. One can easily implement data structures like stack, queue, list and using STL reduces programming time as well. 
 
-Containers - includes container classes to store and manipulate data elements.
-Algorithms - includes important techniques like sorting, searching.
-Miscellaneous - includes string class and other functions.
+The C++ STL grouped into following three categories
+1) Sequences              - Vector, List, Doubly ended queue<br/>
+2) Container Adapters     - Stack, Queue, Prority queue<br/>
+3) Associative Containers - Bitset, Set, Multiset, Map, Multimap 
 
 Usage of several STL classes are illustrated. For convenience and ease of learning, examples are also provided along with syntax.
 
