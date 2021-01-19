@@ -82,7 +82,7 @@ vec_1.swap(vec_2); // vec_1 contains 100, 100, 100, 100 and vec_2 contains 0, 0,
 vec_5.clear(); // vec_5 is empty
 
 // relational - O(n)
-bool status;<br/>
+bool status;
 status = (vec_3 == vec_4); // status contains 1
 status = (vec_3 != vec_4); // status contains 0
 status = (vec_1 < vec_2); // status contains 0, lexicographically compares elements from left
