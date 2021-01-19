@@ -13,9 +13,9 @@ Usage of several STL classes are illustrated. For convenience and ease of learni
 
 ## Sequences
 ### Vector
-<div>
 A vector is similar to an array but with dynamic size. Elements can be accessed in O(1) and insert, delete operations will take O(n) time.<br/>
 
+```c++
 // declaration and initialization<br/>
 vector<int> vec; // vec is a vector variable<br/>
 vector<int> vec_1 (5); // vec_1 is a vector of 0, 0, 0, 0, 0<br/>
@@ -86,4 +86,4 @@ bool status;<br/>
 status = (vec_3 == vec_4); // status contains 1<br/>
 status = (vec_3 != vec_4); // status contains 0<br/>
 status = (vec_1 < vec_2); // status contains 0, lexicographically compares elements from left<br/>
-</div>
+```
