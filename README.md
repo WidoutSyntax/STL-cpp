@@ -1,5 +1,5 @@
 # Contents
-1. <a>Standard Template Library</a>
+1. [Standard Template Library]
 
 # Standard Template Library
 The Standard Template Library(STL) is a set of C++ template classes to provide common data structures. One can easily implement data structures like stack, queue, list and using STL reduces programming time as well. 
