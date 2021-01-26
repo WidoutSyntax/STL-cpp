@@ -81,6 +81,13 @@ vec_1.swap(vec_2); // vec_1 contains 100, 100, 100, 100 and vec_2 contains 0, 0,
 // clear() - O(n) delete the vector
 vec_5.clear(); // vec_5 is empty
 
+// accumulate - O(n) accumulate(first, last, sum) 
+// this function returns sum all elements lying in range [first, last) with variable sum
+int sum = 0;
+cout<<accumulate(vec_1.begin(), vec_1.end(), sum); // this will print 400
+sum = 2;
+cout<<accumulate(vec_1.begin(), vec_1.end(), sum); // this will print 402
+
 // relational - O(n)
 bool status;
 status = (vec_3 == vec_4); // status contains 1
