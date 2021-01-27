@@ -13,7 +13,7 @@ Usage of several STL classes are illustrated. For convenience and ease of learni
 
 ## Sequences
 ### Vector
-A vector is similar to an array but with dynamic size. Elements can be accessed in O(1) and insert, delete operations will take O(n) time.<br/>
+A vector is similar to an array but with dynamic size. Elements can be accessed in O(1) and insert, delete operations will take O(n) time.
 
 ```c++
 // declaration and initialization
@@ -252,4 +252,113 @@ bool status;
 status = (deq_3 == deq_4); // status contains 1
 status = (deq_3 != deq_4); // status contains 0
 status = (deq_1 < deq_2); // status contains 0, lexicographically compares elements from left
+```
+## Container Adapters
+### Stack
+It is a last in first out container.
+
+```c++
+// declaration and initialization
+stack<int> sta; // sta is a stack variable
+vector<int> vec (2,100);
+stack<int, vector<int> > sta_1 (vec); // sta_1 is a copy of vec
+
+// empty() - O(1) - returns 1 if stack is empty, 0 otherwise
+bool sta_empty = sta.empty(); // sta_empty contains 1
+
+// size() - O(1) - returns size of stack
+int sta_size = sta_1.size(); // sta_size contains 2
+
+// top() - O(1) - returns reference to top element
+int sta_top = sta_1.top(); // sta_top is 100
+
+// push() - O(1) - pushes new element from the top
+sta.push(5); // sta is 5
+sta_1.push(5); // sta_1 is 5, 100, 100
+
+// pop() - O(1) - removes top element
+sta_1.pop(); // sta_1 is 100, 100
+
+// swap() - O(1) - swaps the contents of stacks
+sta.swap(sta_1); // sta_1 is 5, sta is 100, 100
+
+// relational - O(n)
+bool status;
+status = (sta == sta_1); // status contains 0
+status = (sta != sta_1); // status contains 1
+status = (sta < sta_1); // status contains 0, lexicographically compares elements from left
+```
+
+### Queue
+It is a first in first out container.
+
+```c++
+// declaration and initialization
+queue<int> que; // que is a queue variable
+vector<int> vec (2,100);
+queue<int> que_1;
+for(int i=0; i<vec.size(); i++)
+    que_1.push(vec[i]);
+
+// empty() - O(1) - returns 1 if queue is empty, 0 otherwise
+bool que_empty = que.empty(); // que_empty contains 1
+
+// size() - O(1) - returns size of queue
+int que_size = que_1.size(); // que_size contains 2
+
+// front() - O(1) - returns reference to first element
+int que_front = que.front(); // que_front is 100
+
+// push() - O(1) - pushes new element from the end
+que.push(5); // que is 5
+que_1.push(5); // que_1 is 100, 100, 5
+
+// back() - O(1) - return reference to last element
+int que_back = que.back(); // que_back is 5
+
+// pop() - O(1) - removes first element
+que_1.pop(); // que_1 is 100, 5
+
+// swap() - O(1) - swaps the contents of stacks
+que.swap(que_1); // que_1 is 5, que is 100, 5
+
+// relational - O(n)
+bool status;
+status = (que == que_1); // status contains 0
+status = (que != que_1); // status contains 1
+status = (que < que_1); // status contains 0, lexicographically compares elements from left 
+```
+
+### Priority Queue
+It is implemented as max heap by default. We can also tweak it to implement as min heap. It will sort itself after adding an elemnt in descending order. 
+
+```c++
+// declaration and initialization
+priority_queue<int> pq; // pq is a priority_queue variable
+int arr[] = {3,6,4};
+priority_queue<int> pq_1 (arr, arr+3); // pq_1 contains 6, 4, 3
+
+// empty() - O(1) - returns 1 if priority_queue is empty, 0 otherwise
+bool pq_empty = pq.empty(); // pq_empty contains 1
+
+// size() - O(1) - returns size of priority_queue
+int pq_size = pq_1.size(); // pq_size contains 3
+
+// top() - O(1) - return reference to first element
+int pq_front = pq_1.top(); // pq_front is 6
+
+// push() - O(log n) - pushes element into priority queue
+pq.push(5); // pq is 5
+pq_1.push(5); // pq_1 is 6, 5, 4, 3
+
+// pop() - O(log n) removes first element
+pq_1.pop(); // pq_1 is 5, 4, 3
+
+// swap() - O(1) - swaps the contents of priority queues
+pq.swap(pq_1); // pq_1 is 5, pq is 5, 4, 3
+
+// changing order to least element first
+priority_queue<int, vector<int>, greater<int> > pq_2;
+pq_2.push(5);
+pq_2.push(3); // pq_2 is 3, 5
 ```
