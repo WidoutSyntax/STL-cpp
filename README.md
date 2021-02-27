@@ -2,7 +2,7 @@
 1. Standard Template Library
 
 # Standard Template Library
-The Standard Template Library(STL) is a set of C++ template classes to provide common data structures. One can easily implement data structures like stack, queue, list and using STL reduces programming time as well. 
+The Standard Template Library(STL) is a set of C++ template classes to provide common data structures. One can easily implement data structures like stack, queue, list, etc and one important thing is using STL reduces programming time as well. 
 
 The C++ STL grouped into following three categories
 1) Sequences              - Vector, List, Doubly ended queue<br/>
