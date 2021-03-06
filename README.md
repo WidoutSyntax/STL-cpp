@@ -362,3 +362,264 @@ priority_queue<int, vector<int>, greater<int> > pq_2;
 pq_2.push(5);
 pq_2.push(3); // pq_2 is 3, 5
 ```
+
+## Associative Containers
+### Set
+It is implemented as BST. It contains unique elements with least element first by default.
+
+```c++
+// declaration and initialization
+set<int> myset; // myset is a set variable
+int arr[] = {4,2,1,2};
+set<int> myset_1 (arr, arr+4); // myset_1 is a set of 1, 2, 4
+set<int> myset_2 (myset_1); // myset_2 is a copy of myset_1
+
+// empty() - O(1) - returns 1 if set is empty, 0 otherwise
+bool myset_empty = myset.empty(); // myset_empty contains 1
+
+// size() - O(1) - returns size of set
+int myset_size = myset_1.size(); // myset_size contains 3
+
+// insert() - inserts new elements into the set
+// insert(value) - O(log n)
+myset.insert(3); // myset contains 3
+
+// insert(start, end) - O(N log(N+n)) where N = end-start
+int arr_1[] = {4,3,4};
+myset_1.insert(arr_1, arr_1+3); // myset_1 contains 1, 2, 3, 4
+
+// clear() - O(n) - delete the set
+myset.clear(); // myset is empty
+
+// erase() - erase elements at desired positions
+myset.insert(arr_1, arr_1+3); // myset contains 3, 4
+// erase(position) - O(1)
+set<int>::iterator set_iter;
+set_iter = myset.begin();
+myset.erase(set_iter); // myset contains 4
+
+// erase(value) - O(log n)
+myset.insert(arr_1, arr_1+3); // myset contains 3, 4
+myset.erase(4); // myset contains 3
+
+// erase(start, end) - O(end-start)
+myset.insert(arr_1, arr_1+3); // myset contains 3, 4
+myset.erase(myset.begin(), myset.end()); // myset is empty
+
+// find(value) - O(log n) - returns iterator to element if found, end() otherwise
+set_iter = myset_1.find(3); // *set_iter outputs 3
+set_iter = myset_1.find(5); // set_iter is myset_1.end()
+
+// count(value) - O(log n) returns 1 if the element is present, 0 otherwise
+int set_count = myset_1.count(4); // set_count contains 1
+set_count = myset_1.count(10); // set_count contains 0
+
+// lower_bound(value) - O(log n) - returns iterator to element equal to or immediately greater than value. Returns end otherwise
+set_iter = myset_1.lower_bound(3); // *set_iter outputs 3
+set_iter = myset_2.lower_bound(3); // *set_iter outputs 4
+
+// upper_bound(value) - O(log n) - returns iterator to element immediately greater than value. Returns end otherwise
+set_iter = myset_1.upper_bound(3); // *set_iter outputs 4
+set_iter = myset_2.upper_bound(3); // *set_iter outputs 4
+
+// equal_range(value) - O(log n) - returns pair of iterators to elements equal to value. In other words, returns lower_bound and upper_bound as a pair.
+pair<set<int>::iterator,set<int>::iterator> set_iter_pair;
+set_iter_pair = myset_1.equal_range(3); // *(set_iter_pair.first) outputs 3 and *(set_iter_pair.second) outputs 4
+
+// swap() - O(1) - swaps the contents of sets
+myset_1.swap(myset_2); // myset_1 contains 1, 2, 4 and myset_2 contains 1, 2, 3, 4
+
+// changing order to greatest element first
+set<int, greater<int> > myset_3 (arr, arr+4); // myset_3 contains 4, 2, 1
+```
+
+### Unordered Set
+It is implemented as hash map. It contains unique elements with no specific order.
+
+```c++
+// declaration and initialization
+unordered_set<int> myset; // myset is an unordered set variable
+int arr[] = {4,2,1,2};
+unordered_set<int> myset_1 (arr, arr+4); // myset_1 is an unordered set of 2, 1, 4 (random order)
+unordered_set<int> myset_2 (myset_1); // myset_2 is a copy of myset_1
+
+// empty() - O(1) - returns 1 if unordered set is empty, 0 otherwise
+bool myset_empty = myset.empty(); // myset_empty contains 1
+
+// size() - O(1) - returns size of unordered set
+int myset_size = myset_1.size(); // myset_size contains 3
+
+// insert() - inserts new elements into the unordered set
+// insert(value) - O(1) on average
+myset.insert(3); // myset contains 3
+
+// insert(start, end) - O(N) where N = end-start
+int arr_1[] = {4,3,4};
+myset_1.insert(arr_1, arr_1+3); // myset_1 contains 4, 2, 1, 3
+
+// clear() - O(n) - delete the unordered set
+myset.clear(); // myset is empty
+
+// erase() - erase elements at desired positions
+myset.insert(arr_1, arr_1+3); // myset contains 4, 3
+// erase(position) - O(1)
+unordered_set<int>::iterator set_iter;
+set_iter = myset.find(4);
+myset.erase(set_iter); // myset contains 3
+
+// erase(value) - O(1)
+myset.insert(arr_1, arr_1+3); // myset contains 3, 4
+myset.erase(4); // myset contains 3
+
+// erase(start, end) - O(end-start)
+myset.insert(arr_1, arr_1+3); // myset contains 3, 4
+myset.erase(myset.begin(), myset.end()); // myset is empty
+
+// find(value) - O(1) - returns iterator to element if found, end() otherwise
+set_iter = myset_1.find(3); // *set_iter outputs 3
+set_iter = myset_1.find(5); // set_iter is myset_1.end()
+
+// count(value) - O(1) returns 1 if the element is present, 0 otherwise
+int set_count = myset_1.count(4); // set_count contains 1
+set_count = myset_1.count(10); // set_count contains 0
+
+// equal_range(value) - O(1) - returns pair of iterators to elements equal to value. In other words, returns lower_bound and upper_bound as a pair.
+pair<unordered_set<int>::iterator,unordered_set<int>::iterator> set_iter_pair;
+set_iter_pair = myset_1.equal_range(3); // *(set_iter_pair.first) outputs 3 and *(set_iter_pair.second) outputs 4
+
+// swap() - O(1) - swaps the contents of unordered sets
+myset_1.swap(myset_2); // myset_1 contains 4, 2, 1 and myset_2 contains 4, 2, 1, 3
+```
+
+### Map
+This container has key value pairs with least value key in first position. It is implemented as BST.
+
+```c++
+// declaration and initialization
+map<int, int> mymap;
+int keys[] = {3,1};
+int values[] = {4,2};
+map<int, int> mymap_1;
+mymap_1[keys[0]] = values[0];
+mymap_1[keys[1]] = values[1]; // mymap_1 contains {1,2},{3,4} pairs
+map<int,int> mymap_2 (mymap_1); // mymap_2 is a copy of mymap_1
+
+// empty() - O(1) - returns 1 if map is empty, 0 otherwise
+bool mymap_empty = mymap.empty(); // mymap_empty contains 1
+
+// size() - O(1) - returns size of map
+int mymap_size = mymap_1.size(); // mymap_size contains 2
+
+// insert() - inserts new elements into the map
+// insert(pair) - O(log n) returns a pair. First is iterator to inserted element or already existing key and second is boolean - true if inserted or false if present already.
+pair<map<int,int>::iterator, bool> map_insert;
+map_insert = mymap.insert(pair<int, int>(1,6)); // map_insert.second contains true, map_insert.first points to element inserted, mymap contains {1,6}
+
+map_insert = mymap_1.insert(pair<int, int>(1,6)); // map_insert.second contains false, map_intert.first points to the pair {1,2}. mymap_1 contains {1,2},{3,4}
+
+// insert(start, end) - O(N log(N+n)) where N = end-start
+mymap.insert(mymap_1.begin(), mymap_1.end()); // mymap contains {1,6}, {3,4}
+
+// clear() - O(n) - delete the map
+mymap.clear(); // mymap is empty
+
+// erase() - erase elements at desired positions
+mymap_1.insert(pair<int, int>(5,6)); // mymap_1 contains {1,2}, {3, 4}, {5,6}
+// erase(position) - O(1)
+map<int,int>::iterator map_iter;
+map_iter = mymap_1.begin();
+mymap_1.erase(map_iter); // mymap_1 contains {3,4}, {5,6}
+
+// erase(key) - O(log n)
+mymap_1.insert(pair<int, int>(1,2)); // mymap_1 contains {1,2}, {3, 4}, {5,6}
+mymap_1.erase(1); // mymap_1 contains {3, 4}, {5,6}
+
+// erase(start, end) - O(end-start)
+mymap.insert(pair<int, int>(1,2)); // mymap contains {1,2}
+mymap.erase(mymap.begin(), mymap.end()); // mymap is empty
+
+// find(key) - O(log n) - returns iterator to element if found, end() otherwise
+map_iter = mymap_1.find(3); // map_iter->first outputs 3, map_iter->second outputs 4
+map_iter = mymap_1.find(1); // map_iter is mymap_1.end()
+
+// count(key) - O(log n) returns 1 if the element is present, 0 otherwise
+int map_count = mymap_1.count(3); // map_count contains 1
+map_count = mymap_1.count(1); // map_count contains 0
+
+// lower_bound(key) - O(log n) - returns iterator to element equal to or immediately greater than value. Returns end otherwise
+map_iter = mymap_1.lower_bound(3); // map_iter->first outputs 3, map_iter->second outputs 4
+map_iter = mymap_1.lower_bound(1); // map_iter->first outputs 3, map_iter->second outputs 4
+
+// upper_bound(key) - O(log n) - returns iterator to element immediately greater than value. Returns end otherwise
+map_iter = mymap_1.upper_bound(3); // // map_iter->first outputs 5, map_iter->second outputs 6
+
+// equal_range(key) - O(log n) - returns pair of iterators to elements equal to value. In other words, returns lower_bound and upper_bound as a pair.
+pair<map<int,int>::iterator,map<int,int>::iterator> map_iter_pair;
+map_iter_pair = mymap_1.equal_range(3); // map_iter_pair.first->first outputs 3 and map_iter_pair.second->first outputs 5
+
+// swap() - O(1) - swaps the contents of maps
+mymap_1.swap(mymap_2); // mymap_1 contains {1,2}, {3, 4} and mymap_2 contains {3, 4}, {5,6}
+```
+
+### Unordered Map
+This container stores key value pairs. It is implemented as hash map.
+
+```c++
+// declaration and initialization
+unordered_map<int, int> mymap;
+int keys[] = {3,1};
+int values[] = {4,2};
+unordered_map<int, int> mymap_1;
+mymap_1[keys[0]] = values[0];
+mymap_1[keys[1]] = values[1]; // mymap_1 contains {3,4}, {1,2} pairs
+unordered_map<int,int> mymap_2 (mymap_1); // mymap_2 is a copy of mymap_1
+
+// empty() - O(1) - returns 1 if unordered map is empty, 0 otherwise
+bool mymap_empty = mymap.empty(); // mymap_empty contains 1
+
+// size() - O(1) - returns size of unordered map
+int mymap_size = mymap_1.size(); // mymap_size contains 2
+
+// insert() - inserts new elements into the unordered map
+// insert(pair) - O(1) returns a pair. First is iterator to inserted element or already existing key and second is boolean - true if inserted or false if present already.
+pair<unordered_map<int,int>::iterator, bool> map_insert;
+map_insert = mymap.insert(pair<int, int>(1,6)); // map_insert.second contains true, map_insert.first points to element inserted, mymap contains {1,6}
+
+map_insert = mymap_1.insert(pair<int, int>(1,6)); // map_insert.second contains false, map_intert.first points to the pair {1,2}. mymap_1 contains {3,4}, {1,2}
+
+// insert(start, end) - O(N) where N = end-start
+mymap.insert(mymap_1.begin(), mymap_1.end()); // mymap contains {1,6}, {3,4}
+
+// clear() - O(n) - delete the unordered map
+mymap.clear(); // mymap is empty
+
+// erase() - erase elements at desired positions
+mymap_1.insert(pair<int, int>(5,6)); // mymap_1 contains {3, 4}, {1,2}, {5,6}
+// erase(position) - O(1)
+unordered_map<int,int>::iterator map_iter;
+map_iter = mymap_1.find(3);
+mymap_1.erase(map_iter); // mymap_1 contains {1,2}, {5,6}
+
+// erase(key) - O(1) - where num is number of occurrences of value
+mymap_1.insert(pair<int, int>(3,4)); // mymap_1 contains {1,2}, {5,6}, {3, 4}
+mymap_1.erase(1); // mymap_1 contains {5,6}, {3, 4}
+
+// erase(start, end) - O(end-start)
+mymap.insert(pair<int, int>(1,2)); // mymap contains {1,2}
+mymap.erase(mymap.begin(), mymap.end()); // mymap is empty
+
+// find(key) - O(1) - returns iterator to element if found, end() otherwise
+map_iter = mymap_1.find(3); // map_iter->first outputs 3, map_iter->second outputs 4
+map_iter = mymap_1.find(1); // map_iter is mymap_1.end()
+
+// count(key) - O(1) returns 1 if the element is present, 0 otherwise
+int map_count = mymap_1.count(3); // map_count contains 1
+map_count = mymap_1.count(1); // map_count contains 0
+
+// equal_range(key) - O(1) - returns pair of iterators to elements equal to value. In other words, returns lower_bound and upper_bound as a pair.
+pair<unordered_map<int,int>::iterator,unordered_map<int,int>::iterator> map_iter_pair;
+map_iter_pair = mymap_1.equal_range(3); // map_iter_pair.first->first outputs 3 and map_iter_pair.second->first outputs 5
+
+// swap() - O(1) - swaps the contents of unordered maps
+mymap_1.swap(mymap_2); // mymap_1 contains {3,4}, {1,2} and mymap_2 contains {5,6}, {3, 4}
+```
