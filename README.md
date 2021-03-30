@@ -89,6 +89,14 @@ cout<<accumulate(vec_1.begin(), vec_1.end(), sum); // this will print 400
 sum = 2;
 cout<<accumulate(vec_1.begin(), vec_1.end(), sum); // this will print 402
 
+// resize - O(n)
+vec.resize(5); // this will print 0 0 0 0 0
+vec.resize(7, 1); // this will print 0 0 0 0 0 1 1
+vec.resize(4, 1); //this will print 0 0 0 0
+
+// fill - O(n)
+fill(vec.begin(), vec.end(), 9); // this will print 9 9 9 9
+
 // relational - O(n)
 bool status;
 status = (vec_3 == vec_4); // status contains 1
