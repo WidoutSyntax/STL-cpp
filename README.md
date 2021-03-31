@@ -632,3 +632,102 @@ map_iter_pair = mymap_1.equal_range(3); // map_iter_pair.first->first outputs 3 
 // swap() - O(1) - swaps the contents of unordered maps
 mymap_1.swap(mymap_2); // mymap_1 contains {3,4}, {1,2} and mymap_2 contains {5,6}, {3, 4}
 ```
+
+### String
+
+```c++
+// declaration and initialization
+string s;
+string s_1 = "random string";
+string s_2(s_1.begin(), s_1.begin() + 3); // s_2 contains ran
+string s_3(5, '#'); // s_3 contains #####
+string s_4(s_1); // s_4 is a copy of s_1
+
+// length() - returns length of string
+int s_length = s_3.length(); // s_length is 5
+
+// access
+char s_char = s_1[0]; // s_char contains r
+s_4[0] = 'f'; // s_4 contains fandom string
+
+// clear() - deletes the string
+s_4.clear(); // s_4 is empty
+
+// empty() - returns 1 if empty, 0 otherwise
+int s_empty = s_4.empty(); // s_empty contains 1
+
+//concatenate
+s_2 += "d"; //s_2 contains rand
+
+//append() - concatenates string to the end
+s_4 = "om";
+s_2.append(s_4); // s_2 contains random
+// append(start, end)
+s_2.append(s_3.begin(), s_3.begin() + 1); // s_2 contains random#
+
+// assign() - replaces current string
+s.assign(s_3); // s contains #####
+// assign(start, end)
+s.assign(s_2.begin(), s_2.end()); // s contains random#
+
+// insert() - inserts string after position
+// insert(position, string)
+s.insert(0, s_3); // s contains #####random#
+// insert(position, start, end)
+s.insert(s.end(), s_3.begin(), s_3.end() - 1); // s contains #####random#####
+
+// erase() - deletes character at the given position(s)
+// erase(position)
+s.erase(s.begin()); // s contains ####random#####
+// erase(start, end)
+s.erase(s.begin(), s.begin() + 4); // s contains random#####
+
+// replace() - replaces from start to end with string
+// replace(start, end, string)
+s.replace(s.begin(), s.begin() + 3, s_3); // s contains #####dom#####
+// replace(start, end, start_1, end_1)
+s.replace(s.begin() + 1, s.end(), s_2.begin(), s_2.end()); // s contains #random#
+
+// find() - returns position of occurrence of string, -1 otherwise
+// find(string)
+int position;
+position = s.find("random"); // position contains 1
+position = s.find("fandom");   // position contains -1
+// find(string, position) - searches for occurrence from position. By default, position is 0 in the above case
+position = s.find("random", 2); // position contains -1
+
+// swap(string) - swaps contents of the strings
+s.swap(s_2); // s contains random#, s_2 contains #random#
+
+// relational operators
+bool status;
+status = (s_1 == s_4); // status contains 0
+status = (s_1 != s_4); // status contains 1
+status = (s_1 < s_4); // status contains 0
+
+// conversions
+// stoi - convert string to integer
+int num = stoi("1998");
+
+// stoll - convert string to long long int
+long long int num_1 = stoll("19981998");
+
+// stof - convert string to float
+float num_2 = stof("1998.26");
+
+// stod - convert string to double
+double num_3 = stod("19981998.26");
+
+// to_string - convert to string
+s = to_string(num_3); // s contains 19981998.26
+
+// transform() - convert string to upper or lower case
+transform(s_4.begin(), s_4.end(), s_4.begin(), ::toupper);
+
+// s1.compare(s2)
+/*compare() - 0   : if strings are equal
+            < 0 : (len(s1) < len(s2)) or (first different char of s1 < char of s2)
+            > 0 : (len(s1) > len(s2)) or (first different char of s1 > char of s2)
+
+*/
+```
