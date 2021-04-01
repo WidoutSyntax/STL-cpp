@@ -10,6 +10,7 @@ The C++ STL grouped into following three categories
 3) Associative Containers - Set, Unordered Set, Map, Unordered Map,  
                             Multimap, Multiset, Bitset   
 
+There are some STL that can be used as well - String, Pair
 Usage of several STL classes are illustrated. For convenience and ease of learning, examples are also provided along with syntax.
 
 ## Sequences
@@ -374,7 +375,7 @@ pq_2.push(3); // pq_2 is 3, 5
 
 ## Associative Containers
 ### Set
-It is implemented as BST. It contains unique elements with least element first by default.
+It is implemented as Red-Black tree. It contains unique elements with least element first by default.
 
 ```c++
 // declaration and initialization
@@ -501,7 +502,7 @@ myset_1.swap(myset_2); // myset_1 contains 4, 2, 1 and myset_2 contains 4, 2, 1,
 ```
 
 ### Map
-This container has key value pairs with least value key in first position. It is implemented as BST.
+This container has key value pairs with least value key in first position. It is implemented as Red-Black tree.
 
 ```c++
 // declaration and initialization
@@ -633,6 +634,7 @@ map_iter_pair = mymap_1.equal_range(3); // map_iter_pair.first->first outputs 3 
 mymap_1.swap(mymap_2); // mymap_1 contains {3,4}, {1,2} and mymap_2 contains {5,6}, {3, 4}
 ```
 
+## Useful
 ### String
 
 ```c++
@@ -730,4 +732,16 @@ transform(s_4.begin(), s_4.end(), s_4.begin(), ::toupper);
             > 0 : (len(s1) > len(s2)) or (first different char of s1 > char of s2)
 
 */
+```
+
+### Pair
+
+```c++
+pair<int, int> p; // declaration
+pair<int, int> p_1 (3,5); // initialization
+p = make_pair(2,4); // assign
+int first, second;
+first = p.first; // first contains 2
+second = p.second; // second contains 4
+p = {3, 5}; //p.first is 3 and p.second is 5
 ```
