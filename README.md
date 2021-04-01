@@ -6,8 +6,8 @@ The Standard Template Library(STL) is a set of C++ template classes to provide c
 
 The C++ STL grouped into following three categories
 1) Sequences              - [Vector](#Vector), [List](#List), [Doubly ended queue](#Deque)<br/>
-2) Container Adapters     - [Stack](#Stack), [Queue](#Queue), [Priority Queue](#Prority-queue)<br/>
-3) Associative Containers - [Set](#Set), [Unordered Set](#Unordered-Set), [Map]{#Map), [Unordered Map](#Unordered-Map),  
+2) Container Adapters     - [Stack](#Stack), [Queue](#Queue), [Priority Queue](#Prority-Queue)<br/>
+3) Associative Containers - [Set](#Set), [Unordered Set](#Unordered-Set), [Map](#Map), [Unordered Map](#Unordered-Map),  
                             Multimap, Multiset, Bitset   
 
 There are some STL that can be used as well - [String](#String), [Pair](#Pair)<br/>
